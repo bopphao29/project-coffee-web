@@ -1,0 +1,142 @@
+<div>
+  <mat-sidenav-container class="kl-sidenav-container">
+    <mat-sidenav #sidenav [opened]="false" [mode]="'over'" [fixedInViewport]="isLessThenLargeDevice">
+      <div class="rounded-md border overflow-hidden w-72">
+        <div class="user text-center bg-primary py-10 px-5">
+          <img class="ml-auto mr-auto" src="https://i.pinimg.com/474x/be/99/f3/be99f312d032e1dc160a5a8ee3bfff82.jpg" style="width: 70px; height: 70px;"/>
+          <h4 class="text-base text-white mt-3">{{nameAd}}</h4>
+        </div>
+        <mat-nav-list class="_sidenav">
+          <a
+            mat-list-item
+            routerLink="/dashboard"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            ><mat-icon class="mr-2">dashboard</mat-icon> Dashboard</a
+          >
+          <a
+            mat-list-item
+            routerLink="/dashboard/profile"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            ><mat-icon class="mr-2">account_circle</mat-icon> Thông tin cá nhân</a
+          >
+          <a
+            mat-list-item
+            routerLink="/dashboard/saved-items"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            ><mat-icon class="mr-2">list</mat-icon> Saved Items</a
+          >
+          <a
+            mat-list-item
+            routerLink="/dashboard/orders"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            ><mat-icon class="mr-2">article</mat-icon> Orders</a
+          >
+          <a (click)="onLogout()" mat-list-item class="font-semibold text-gray-500 hover:text-primary"><mat-icon class="mr-2">logout</mat-icon> Logout</a>
+        </mat-nav-list>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <header class="ll_header shadow">
+        <div class="container">
+          <div class="flex items-center">
+            <div class="flex items-center">
+              <a class="logo" [routerLink]="['']"><img src="assets/images/QTlogo.png" alt="Logo" /></a>
+            </div>
+            <button
+              *ngIf="isLessThenLargeDevice"
+              (click)="sidenav.toggle()"
+              class="_sidenav__toggler ml-3 ms-sm-3"
+              mat-icon-button
+            >
+              <mat-icon>menu</mat-icon>
+            </button>
+            <div class="items-center flex ml-auto">
+              <button mat-icon-button>
+                <mat-icon>notifications</mat-icon>
+              </button>
+             
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <div>
+        <div class="container">
+          <div class="grid grid-cols-12 gap-8">
+            <div class="col-span-3 hidden xl:block">
+              <div class="py-5 min-h-screen">
+                <div class="rounded-md border overflow-hidden h-full">
+                  <div class="user text-center bg-primary py-10 px-5">
+                    <img class="ml-auto mr-auto" src="https://i.pinimg.com/474x/be/99/f3/be99f312d032e1dc160a5a8ee3bfff82.jpg" style="width: 70px; height: 70px;"/>
+                    <h4 class="text-white mt-3">{{nameAd}}</h4>
+                  </div>
+                  <mat-nav-list class="_sidenav">
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard"
+                      [routerLinkActiveOptions]="{ exact: true }"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">dashboard</mat-icon> Dashboard</a
+                    >
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard/profile"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">account_circle</mat-icon> Thông tin cá nhân</a
+                    >
+                    <!-- <a
+                      mat-list-item
+                      routerLink="/dashboard/saved-items"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">list</mat-icon> Saved Items</a
+                    > -->
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard/users"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      >	<mat-icon class="mr-2">group</mat-icon>Quản lý người dùng</a
+                    >
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard/products"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">card_giftcard</mat-icon>Quản lý sản phẩm</a
+                    >
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard/promotions"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">whatshot</mat-icon>Quản lý khuyến mãi</a
+                    >
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard/orders"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2"> list_alt</mat-icon>Quản lý đơn hàng</a
+                    >
+                    <a (click)="onLogout()" mat-list-item class="font-semibold text-gray-500 hover:text-primary"><mat-icon class="mr-2">logout</mat-icon> Đăng Xuất</a>
+                  </mat-nav-list>
+                </div>
+              </div>
+            </div>
+            <div class="col-span-12 xl:col-span-9 py-10">
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
