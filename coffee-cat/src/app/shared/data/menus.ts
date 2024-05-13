@@ -7,6 +7,7 @@ export const menuList: Menu[] = [
   {
     path: '/products',
     name: 'SẢN PHẨM'
+    //
   },
   {
     path: '/sale',

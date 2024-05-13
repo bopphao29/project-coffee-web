@@ -20,6 +20,8 @@ import { DasboardSalaryComponent } from './dasboard-salary/dasboard-salary.compo
 import { DasboardEmployeeComponent } from './dasboard-employee/dasboard-employee.component';
 import { DashboardCategoryComponent } from './dashboard-category/dashboard-category.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
+import { DashboardUserProfileComponent } from './dashboard-user-profile/dashboard-user-profile.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
     DashboardSalaryManagementComponent,
     DasboardSalaryComponent,
     DasboardEmployeeComponent,
-    DashboardCategoryComponent
+    DashboardCategoryComponent,
+    DashboardUserComponent,
+    DashboardUserProfileComponent
   ],
   imports: [CommonModule, DashboardRoutingModule, SharedModule, MatMenuModule, NgxPaginationModule, FormsModule,
     ReactiveFormsModule,]

@@ -38,8 +38,10 @@ export class DashboardCategoryComponent implements OnInit {
 
   showModal = false;
   showModalChangePasword = false;
-
+  showModalEdit = false;
   toggleModal(){
+    this.createCate.name = ''
+    this.createCate.description = ''
     this.showModal = !this.showModal;
   }
 
@@ -55,11 +57,13 @@ export class DashboardCategoryComponent implements OnInit {
 
   createCate ={
     name: "",
-    description: ""
+    description: "",
+    status: "",
   }
 
   createCategories(){
-    this.apiServices.createCategory(this.createCate.name, this.createCate.description).subscribe(data => {
+    this.apiServices.createCategory(this.createCate.name, this.createCate.description).subscribe
+    (data => {
       console.log(data)
       // sessionStorage.setItem('access_token', data['accessToken'])
       // localStorage.setItem('access_token', data['accessToken'])
@@ -97,6 +101,117 @@ export class DashboardCategoryComponent implements OnInit {
                 icon: "error",
                 title: "Thêm thất bại"
               });
-    })
+    }
+  )
   }
+
+  deleteCate(item){
+    this.apiServices.deleteCategory(item.id).subscribe((data) =>{
+      // console.log(data);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Xóa thành công"
+      });
+
+      this.getList()
+      
+    }, err => {
+      const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                }
+              });
+              Toast.fire({
+                icon: "error",
+                title: "Xóa thất bại"
+              });
+    }
+  )
+  }
+
+
+  id : number
+  toggleModalEdit(category){
+    this.showModalEdit = !this.showModalEdit;
+    if(this.showModalEdit){
+      this.apiServices.getDetailCategories(this.pageIndex, this.pageSize,category.id).subscribe((data) => {
+        console.log(data)
+        this.id = data['data'].id
+        console.log(this.id);
+        
+        // this.items = data['data']
+        this.createCate.name = data['data'].name
+        this.createCate.description = data['data'].description
+        this.createCate.status = data['data'].status
+        // this.createPro.name = data['data'].category
+      })
+      
+    }
+  }
+
+  updateCtegory(){
+    const body = {
+      "id" : this.id,
+      "name": this.createCate.name, // tên sản phẩm
+      "description": this.createCate.description, // danh mục
+      "status": this.createCate.status, // giá 
+    }
+    this.apiServices.updateCate(body).subscribe((data) => {
+      console.log(data)
+      const Toast= Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Sửa thành công"
+      });
+      this.getList()
+      this.showModalEdit = !this.showModalEdit
+    }, err => {
+      const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                }
+              });
+              Toast.fire({
+                icon: "error",
+                title: "Sửa thất bại"
+              });
+    }
+
+      )
+      // this}}
+  }
+
 }

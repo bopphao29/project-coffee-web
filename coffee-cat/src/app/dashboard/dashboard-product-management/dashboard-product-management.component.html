@@ -1,8 +1,24 @@
 <div>
+  <div class="mt-3 flex mb-3">
+    <input
+      type="text"
+      placeholder="Nhập sản phẩm tìm kiếm ..."
+      class="flex-1 w-full sm:text-sm lg:text-xl border-gray-300 rounded-l-md py-3 px-6"
+      required
+      [(ngModel)]="name1"
+    />
+    
+  </div>
+  <div class="flex justify-end">
+    <button class=" bg-blue-800 hover:bg-grey-900 text-white text-sm py-2 px-4 font-semibold rounded focus:outline-none focus:shadow-outline h-10" (click)="toggleModal()">+ Thêm sản phẩm</button>
+  </div>
+</div>
+
+<div>
   <div class="filter flex items-center mb-5">
-    <h5>Favorite products</h5>
+    <h5>Danh sách sản phẩm</h5>
     <div class="flex items-center ml-auto">
-      <button [class.text-accent]="view === 'grid'" (click)="view = 'grid'" mat-icon-button class="view__btn"><mat-icon>grid_view</mat-icon></button>
+      <!-- <button [class.text-accent]="view === 'grid'" (click)="view = 'grid'" mat-icon-button class="view__btn"><mat-icon>grid_view</mat-icon></button> -->
       <button [class.text-accent]="view === 'list'" (click)="view = 'list'" mat-icon-button class="view__btn"><mat-icon>list_alt</mat-icon></button>
     </div>
   </div>
@@ -10,48 +26,59 @@
     <div *ngIf="view === 'list'" class="table-inside">
       <div class="flex flex-col border ltLg:responsive">
         <div class="flex items-center p-4 border-b hover:bg-blue-100">
-          <div class="w-6/12 font-medium"><div class="pl-16 ml-3">Tên sản phẩm</div></div>
+          <div class="w-2/12 font-medium">Mã sản phẩm</div>
+          <div class="w-2/12 font-medium">Tên sản phẩm</div>
           <div class="w-2/12 font-medium">Loại sản phẩm</div>
           <div class="w-2/12 font-medium text-center">Giá tiền</div>
-          <div class="w-2/12 font-medium">Rating</div>
-          <div class="w-1/12 font-medium">Feedback</div>
-          <div class="w-1/12"></div>
+          <div class="w-2/12 font-medium">Giá giảm</div>
+          <!-- <div class="w-1/12 font-medium">Feedback</div> -->
+          <div class="w-2/12">Action</div>
         </div>
-        <div class="flex items-center p-4 border-b hover:bg-blue-100" *ngFor="let product of products | slice: 0:9">
-          <div class="w-6/12">
+        <div class="flex items-center p-4 border-b hover:bg-blue-100" *ngFor="let product of items | slice: 0:9">
+          <!-- <div class="w-6/12">
             <a href="" class="flex hover:text-primary">
               <div class="max-h-16 w-16 flex-none mr-3 border" *ngIf="product?.images">
                 <img [src]="product?.images[0]" alt="img">
               </div>
               <h6 class="flex-auto">{{ product?.name }}</h6>
             </a>
-          </div>
+          </div> -->
+          <!--  -->
+          <div class="w-2/12">{{product?.id}}</div>
+          <div class="w-2/12">{{product?.name}}</div>
           <div class="w-2/12">{{product?.category}}</div>
-          <div class="w-2/12 text-center">${{product?.price}}</div>
+          <div class="w-2/12 text-center">{{product?.price}}</div>
           <div class="w-2/12">
-            <div class="flex items-center">
+            <!-- <div class="flex items-center">
               <mat-icon class="mr-1 text-lg leading-4 h-4 w-4 text-yellow-500">star_rate</mat-icon>
               {{product?.rating}}
-            </div>
+            </div> -->
+            {{product?.discount}}
           </div>
-          <div class="w-1/12">
+          <!-- <div class="w-1/12">
             <div class="flex items-center">
               <mat-icon class="mr-1 text-lg leading-4 h-4 w-4">feedback</mat-icon>
               {{product?.feedback}}
             </div>
-          </div>
+          </div> -->
           <div class="w-1/12 text-right">
             <button class="action_icon__btn" mat-icon-button [matMenuTriggerFor]="menu">
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xposition="before">
-              <button mat-menu-item>
+              <button mat-menu-item >
 								<svg xmlns="http://www.w3.org/2000/svg" style="color: rgb(20, 177, 198);" width="22" height="22" fill="currentColor" class="bi bi-grid-3x2-gap mr-2" viewBox="0 0 16 16">
 									<path d="M4 4v2H2V4zm1 7V9a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m5 5V9a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1M9 4v2H7V4zm5 0h-2v2h2zM4 9v2H2V9zm5 0v2H7V9zm5 0v2h-2V9zm-3-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z"/>
 								</svg>
 								<span>Chi tiết</span>
 							</button>
-							<button mat-menu-item>
+              <button mat-menu-item (click)="toggleModalEdit(product)">
+								<svg xmlns="http://www.w3.org/2000/svg" style="color: rgb(20, 177, 198);" width="22" height="22" fill="currentColor" class="bi bi-grid-3x2-gap mr-2" viewBox="0 0 16 16">
+									<path d="M4 4v2H2V4zm1 7V9a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m5 5V9a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1M9 4v2H7V4zm5 0h-2v2h2zM4 9v2H2V9zm5 0v2H7V9zm5 0v2h-2V9zm-3-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z"/>
+								</svg>
+								<span>Sửa</span>
+							</button>
+							<button mat-menu-item (click)="deleteProduct(product.id)">
 								<svg xmlns="http://www.w3.org/2000/svg" style="color: red;" width="18" height="18" fill="currentColor" class="bi bi-trash3-fill mr-2" viewBox="0 0 16 16">
 									<path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
 								</svg>
@@ -78,3 +105,219 @@
     </div>  
   </div>
 </div>
+
+<div *ngIf="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+  <div class="relative w-auto my-6" style="max-width: 800px; width: 800px;">
+    <!--content-->
+    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+      <!--header-->
+      <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+        <h3 class="text-3xl font-semibold">
+          Thêm sản phẩm
+        </h3>
+        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="toggleModal()">
+          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33" />
+						</svg>
+						
+          </span>
+        </button>
+      </div>
+      <!--body-->
+      <div class="relative p-6 flex-auto">
+        <div class="my-4 text-blueGray-500 text-lg leading-relaxed">
+          
+
+<form class="">
+	<!-- <div class="relative w-full mb-5 group">
+		<input type="text" name="name" id="name" class="w-full px-0 block my-4 text-xl w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+		<label for="name" class="peer-focus:font-medium absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tên danh mục: </label>
+</div> -->
+<input type="text" placeholder="Tên sản phẩm" class="border border-gray-200 p-2 px-4 w-full rounded-sm mt-5" 
+name="name" id="name" #name="ngModel" required 
+[(ngModel)]="createPro.name" 
+/>
+<input type="number" placeholder="Giá sản phẩm" class="border border-gray-200 p-2 px-4 w-full rounded-sm mt-5" 
+name="price" id="price" #price="ngModel" required 
+[(ngModel)]="createPro.price" 
+/>
+<input type="number" placeholder="Giá giảm" class="border border-gray-200 p-2 px-4 w-full rounded-sm mt-5" 
+name="discount" id="discount" #discount="ngModel" required 
+[(ngModel)]="createPro.discount" 
+/>
+
+<!-- <div class="relative w-full mb-5 group mt-1">
+	<input type="text" name="email" id="email" class="w-full px-0 mt-2 block my-4 text-xl w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+	<label for="email" class="peer-focus:font-medium absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email: </label>
+</div> -->
+<div class="relative w-full mb-5 group">
+                <select
+                      name="categories"
+                      class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    >
+                      <option [ngValue]="-1">Chọn đồ uống</option>
+                      <option [ngValue]="1">Cà phê</option>
+                      <option [ngValue]="2">Nước ép</option>
+                      <option [ngValue]="3">Trà sữa</option>
+                      <option [ngValue]="4">Sinh tố</option>
+                    </select>
+                </div>
+<div class="relative w-full mb-5 group">
+  <textarea
+  cols="10"
+  rows="3"
+  placeholder="Mô tả..."
+  class="border border-gray-200 p-3 mt-5 w-full rounded-sm mt-5"
+	name="description" id="description" #description="ngModel" required 
+  [(ngModel)]="createPro.description" 
+>
+</textarea>
+
+</div>
+<div>
+  <span>Chọn ảnh</span>
+  <input  [(ngModel)]="createPro.imageUrl" name="imageUrl" id="imageUrl" #imageUrl="ngModel"  type="file" id="img" name="img" accept="image/*">
+</div>
+  <!-- <div class="grid md:grid-cols-2 md:gap-6">
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number (123-456-7890)</label>
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company (Ex. Google)</label>
+    </div>
+  </div> -->
+  <!-- <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button> -->
+</form>
+
+        </div>
+      </div>
+      <!--footer-->
+      <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+        <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
+          Hủy
+        </button>
+        <button style="background-color: rgba(8, 88, 8, 0.651)" class="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="createCategories()">
+          Xác nhận
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>`
+
+<div *ngIf="showModalEdit" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+  <div class="relative w-auto my-6" style="max-width: 800px; width: 800px;">
+    <!--content-->
+    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+      <!--header-->
+      <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+        <h3 class="text-3xl font-semibold">
+          Sửa sản phẩm
+        </h3>
+        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="toggleModal()">
+          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33" />
+						</svg>
+						
+          </span>
+        </button>
+      </div>
+      <!--body-->
+      <div class="relative p-6 flex-auto">
+        <div class="my-4 text-blueGray-500 text-lg leading-relaxed">
+          
+
+<form class="">
+	<!-- <div class="relative w-full mb-5 group">
+		<input type="text" name="name" id="name" class="w-full px-0 block my-4 text-xl w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+		<label for="name" class="peer-focus:font-medium absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tên danh mục: </label>
+</div> -->
+<input type="text" placeholder="Tên sản phẩm" class="border border-gray-200 p-2 px-4 w-full rounded-sm mt-5" 
+name="name" id="name" #name="ngModel" required 
+[(ngModel)]="createPro.name" 
+/>
+<input type="number" placeholder="Giá sản phẩm" class="border border-gray-200 p-2 px-4 w-full rounded-sm mt-5" 
+name="price" id="price" #price="ngModel" required 
+[(ngModel)]="createPro.price" 
+/>
+<input type="number" placeholder="Giá giảm" class="border border-gray-200 p-2 px-4 w-full rounded-sm mt-5" 
+name="discount" id="discount" #discount="ngModel" required 
+[(ngModel)]="createPro.discount" 
+/>
+
+<!-- <div class="relative w-full mb-5 group mt-1">
+	<input type="text" name="email" id="email" class="w-full px-0 mt-2 block my-4 text-xl w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+	<label for="email" class="peer-focus:font-medium absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email: </label>
+</div> -->
+      <div class="relative w-full mb-5 group">
+                      <select [(ngModel)]="createPro.categoryId" 
+                            name="categories"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                          >
+                            <option [ngValue]="-1">Chọn đồ uống</option>
+                            <option [ngValue]="1">Nước ép</option>
+                            <option [ngValue]="2">Cà phê</option>
+                            <option [ngValue]="3">Sinh tố</option>
+                            <option [ngValue]="4">Trà</option>
+                          </select>
+                      </div>
+                      <div class="relative w-full mb-5 group">
+                        <select [(ngModel)]="createPro.status" 
+                              name="categories"
+                              class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            >
+                              <option [ngValue]="-1">status</option>
+                              <option [ngValue]="1">Đang kinh doanh</option>
+                              <option [ngValue]="0">Ngừng kinh doanh</option>
+                            </select>
+                        </div>
+
+                      <div class="relative w-full mb-5 group">
+  
+  <textarea
+  cols="10"
+  rows="3"
+  placeholder="Mô tả..."
+  class="border border-gray-200 p-3 mt-5 w-full rounded-sm mt-5"
+	name="description" id="description" #description="ngModel" required 
+  [(ngModel)]="createPro.description" 
+>
+</textarea>
+
+</div>
+<div>
+  <span>Chọn ảnh</span>
+  <input  [(ngModel)]="createPro.imageUrl" name="imageUrl" id="imageUrl" #imageUrl="ngModel"  type="file" id="img" name="img" accept="image/*">
+</div>
+  <!-- <div class="grid md:grid-cols-2 md:gap-6">
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number (123-456-7890)</label>
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+        <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+        <label for="floating_company" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company (Ex. Google)</label>
+    </div>
+  </div> -->
+  <!-- <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button> -->
+</form>
+
+        </div>
+      </div>
+      <!--footer-->
+      <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+        <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModalEdit()">
+          Hủy
+        </button>
+        <button style="background-color: rgba(8, 88, 8, 0.651)" class="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="updateProduct()">
+          Xác nhận
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showModalEdit" class="opacity-25 fixed inset-0 z-40 bg-black"></div>`
