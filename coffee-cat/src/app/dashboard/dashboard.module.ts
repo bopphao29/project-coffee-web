@@ -16,6 +16,10 @@ import { DashboardProductManagementComponent } from './dashboard-product-managem
 import { DashboardEmployeeManagementComponent } from './dashboard-employee-management/dashboard-employee-management.component';
 import { DashboardReviewManagementComponent } from './dashboard-review-management/dashboard-review-management.component';
 import { DashboardSalaryManagementComponent } from './dashboard-salary-management/dashboard-salary-management.component';
+import { DasboardSalaryComponent } from './dasboard-salary/dasboard-salary.component';
+import { DasboardEmployeeComponent } from './dasboard-employee/dasboard-employee.component';
+import { DashboardCategoryComponent } from './dashboard-category/dashboard-category.component';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,8 +33,12 @@ import { DashboardSalaryManagementComponent } from './dashboard-salary-managemen
     DashboardProductManagementComponent,
     DashboardEmployeeManagementComponent,
     DashboardReviewManagementComponent,
-    DashboardSalaryManagementComponent
+    DashboardSalaryManagementComponent,
+    DasboardSalaryComponent,
+    DasboardEmployeeComponent,
+    DashboardCategoryComponent
   ],
-  imports: [CommonModule, DashboardRoutingModule, SharedModule, MatMenuModule, NgxPaginationModule]
+  imports: [CommonModule, DashboardRoutingModule, SharedModule, MatMenuModule, NgxPaginationModule, FormsModule,
+    ReactiveFormsModule,]
 })
 export class DashboardModule {}

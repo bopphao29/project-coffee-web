@@ -11,6 +11,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+
 @NgModule({
   declarations: [ProductListComponent, ProductDetailsComponent, ProductHeroComponent],
   imports: [

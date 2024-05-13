@@ -1,11 +1,11 @@
-<div class="grid grid-cols-12 gap-4 lg:gap-8" *ngFor="let data of dashboardInfor">
+<!-- <div class="grid grid-cols-12 gap-4 lg:gap-8" *ngFor="let data of dashboardInfor">
   <div class="col-span-6 md:col-span-4 border rounded px-4 lg:px-8 py-8 lg:py-16">
     <span class="text-accent mb-5">
 			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" style="fill: red;" fill="currentColor" class="bi bi-heart-fill mb-5" viewBox="0 0 16 16">
 				<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
 			</svg>
 		</span>
-    <h6>Tổng lượt thích</h6>
+    <h6>Doanh thu</h6>
     <div class="count mb-3 mt-5">{{data.favoriteCount || '0'}}</div>
     <a [routerLink]="'/dashboard/saved-items'" class="font-semibold" mat-flat-button color="warn">Xem tất cả</a>
   </div>
@@ -16,7 +16,7 @@
 				<path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
 			</svg>
 		</span>
-    <h6>Tổng lượt xem</h6>
+    <h6>Tổng sản phẩm đã bán</h6>
     <div class="count mb-3 mt-5">{{data.viewCount}}</div>
     <a [routerLink]="'/dashboard/orders'" class="font-semibold" mat-flat-button color="warn">Xem tất cả</a>
   </div>
@@ -88,13 +88,11 @@
 							}" 
 							class="text-[12px] bg-opacity-20 rounded-full px-3 inline-block font-bold py-[3px]"
 						>
-							<!-- {{ order?.status | titlecase }}
-							 -->
+							
 							<span *ngIf="order?.status === '0'">Online</span>
 							<span *ngIf="order?.status === '1'">Offline</span>
 						</div>
-						<!-- <span class="text-primary" *ngIf="order?.status === '0'">Online</span>
-						<span class="bg-blue-200 text-yellow-400" *ngIf="order?.status === '1'">{{'Offline'}}</span> -->
+						
 					</td>
 					<td class="text-right">
 						<button class="action_icon__btn" mat-icon-button [matMenuTriggerFor]="menu">
@@ -119,4 +117,6 @@
 			</tbody>
 		</table>
 	</div>
-</div>
+</div> -->
+
+<h3>Chào mừng admin</h3>

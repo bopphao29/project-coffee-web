@@ -22,12 +22,47 @@
             class="font-semibold text-gray-500 hover:text-primary"
             ><mat-icon class="mr-2">account_circle</mat-icon> Thông tin cá nhân</a
           >
+          <!-- <a
+            mat-list-item
+            routerLink="/dashboard/saved-items"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            ><mat-icon class="mr-2">list</mat-icon> Quản lý người dùng</a
+          > -->
           <a
             mat-list-item
             routerLink="/dashboard/saved-items"
             routerLinkActive="bg-gray-200"
             class="font-semibold text-gray-500 hover:text-primary"
-            ><mat-icon class="mr-2">list</mat-icon> Saved Items</a
+            ><mat-icon class="mr-2">list</mat-icon> Quản lý sản phẩm</a
+          >
+          <a
+            mat-list-item
+            routerLink="/dashboard/saved-items"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            ><mat-icon class="mr-2">list</mat-icon> Quản lý khuyến mãi</a
+          >
+          <a
+            mat-list-item
+            routerLink="/dashboard/saved-items"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            ><mat-icon class="mr-2">list</mat-icon> Quản lý đơn hàng</a
+          >
+          <a
+            mat-list-item
+            routerLink="/dashboard/saved-items"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            ><mat-icon class="mr-2">group</mat-icon> Quản lý nhân viên</a
+          >
+          <a
+            mat-list-item
+            routerLink="/dashboard/saved-items"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            ><mat-icon class="mr-2">list</mat-icon> Quản lý tiền lương</a
           >
           <a
             mat-list-item
@@ -98,12 +133,19 @@
                       class="font-semibold text-gray-500 hover:text-primary"
                       ><mat-icon class="mr-2">list</mat-icon> Saved Items</a
                     > -->
-                    <a
+                    <!-- <a
                       mat-list-item
                       routerLink="/dashboard/users"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
                       >	<mat-icon class="mr-2">group</mat-icon>Quản lý người dùng</a
+                    > -->
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard/category"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">card_giftcard</mat-icon>Quản lý danh mục</a
                     >
                     <a
                       mat-list-item
@@ -126,6 +168,20 @@
                       class="font-semibold text-gray-500 hover:text-primary"
                       ><mat-icon class="mr-2"> list_alt</mat-icon>Quản lý đơn hàng</a
                     >
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard/employees"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2"> group</mat-icon>Quản lý nhân viên</a
+                    >
+                    <!-- <a
+                      mat-list-item
+                      routerLink="/dashboard/salary"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2"> list_alt</mat-icon>Quản lý tiền lương</a
+                    > -->
                     <a (click)="onLogout()" mat-list-item class="font-semibold text-gray-500 hover:text-primary"><mat-icon class="mr-2">logout</mat-icon> Đăng Xuất</a>
                   </mat-nav-list>
                 </div>

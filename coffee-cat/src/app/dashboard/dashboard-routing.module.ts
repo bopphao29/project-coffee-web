@@ -8,6 +8,9 @@ import { DashboardSavedItemComponent } from './dashboard-saved-item/dashboard-sa
 import { DashboardProductManagementComponent } from './dashboard-product-management/dashboard-product-management.component';
 import { DashboardUserManagementComponent } from './dashboard-user-management/dashboard-user-management.component';
 import { DashboardPromotionManagementComponent } from './dashboard-promotion-management/dashboard-promotion-management.component';
+import { DasboardEmployeeComponent } from './dasboard-employee/dasboard-employee.component';
+import { DasboardSalaryComponent } from './dasboard-salary/dasboard-salary.component';
+import { DashboardCategoryComponent } from './dashboard-category/dashboard-category.component';
 
 const DashboardChildrenRoute: Routes = [
   {
@@ -38,6 +41,18 @@ const DashboardChildrenRoute: Routes = [
   {
     path: 'promotions',
     component: DashboardPromotionManagementComponent
+  },
+  {
+    path: 'employees',
+    component: DasboardEmployeeComponent
+  },
+  {
+    path: 'salary',
+    component: DasboardSalaryComponent
+  },
+  {
+    path: 'category',
+    component: DashboardCategoryComponent
   }
 ];
 

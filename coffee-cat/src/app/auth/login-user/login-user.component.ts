@@ -1,41 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { adminList as staticAdminList } from '../../shared/data/admin';
-import { FormsModule } from '@angular/forms';
-import { FormGroup, FormControl, FormBuilder, Validators ,AbstractControl} from '@angular/forms';
-import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
-import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, FormBuilder, Validators ,AbstractControl} from '@angular/forms';
 import { ApiService } from 'src/app/shared/api.service';
+import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'll-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-login-user',
+  templateUrl: './login-user.component.html',
+  styleUrls: ['./login-user.component.scss']
 })
-export class LoginComponent implements OnInit {
-
-  user_name: string
-  password: string
-  adminList = []
-  submitted = false;
+export class LoginUserComponent implements OnInit {
 
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
     private apiServices: ApiService
-
   ) { }
+
   ngOnInit(): void {
-    this.getByAdmin()
   }
 
   formLogin = {
     username: '',
     password: '',
-  }
-
-  getByAdmin(){
-    this.adminList = staticAdminList
   }
 
   onSubmit() {
@@ -77,44 +65,4 @@ export class LoginComponent implements OnInit {
               });
     })
   }
-
-  // checkAccount(){
-  //   this.submitted = true
-  //   if(this.formLogin.username== staticAdminList[0].user_name && this.formLogin.password == staticAdminList[0].password){
-  //     this.router.navigate(['/dashboard'])
-  //     const Toast = Swal.mixin({
-  //       toast: true,
-  //       position: "top-end",
-  //       showConfirmButton: false,
-  //       timer: 2000,
-  //       timerProgressBar: true,
-  //       didOpen: (toast) => {
-  //         toast.onmouseenter = Swal.stopTimer;
-  //         toast.onmouseleave = Swal.resumeTimer;
-  //       }
-  //     });
-  //     Toast.fire({
-  //       icon: "success",
-  //       title: "Đăng nhập thành công"
-  //     });
-  //   }else{
-  //     const Toast = Swal.mixin({
-  //       toast: true,
-  //       position: "top-end",
-  //       showConfirmButton: false,
-  //       timer: 2000,
-  //       timerProgressBar: true,
-  //       didOpen: (toast) => {
-  //         toast.onmouseenter = Swal.stopTimer;
-  //         toast.onmouseleave = Swal.resumeTimer;
-  //       }
-  //     });
-  //     Toast.fire({
-  //       icon: "error",
-  //       title: "Sai tên đăng nhập hoặc mật khẩu"
-  //     });
-  //   }
-  // }
-
-
 }

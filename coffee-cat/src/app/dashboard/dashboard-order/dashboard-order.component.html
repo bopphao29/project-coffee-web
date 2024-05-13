@@ -7,7 +7,7 @@
 		</span>
     <h6>Tổng lượt mua</h6>
     <div class="count mb-3 mt-5">{{countBuy || 'Chưa có'}}</div>
-    <a [routerLink]="'/dashboard/saved-items'" class="font-semibold" mat-flat-button color="warn">Xem tất cả</a>
+    <!-- <a [routerLink]="'/dashboard/saved-items'" class="font-semibold" mat-flat-button color="warn">Xem tất cả</a> -->
   </div>
   <div class="col-span-6 md:col-span-3 border rounded px-4 lg:px-8 py-8 lg:py-16">
     <span class="text-accent mb-5">
@@ -16,9 +16,9 @@
 				<path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
 			</svg>
 		</span>
-    <h6>Online</h6>
+    <h6>Đã thanh toán</h6>
     <div class="count mb-3 mt-5">{{online || 0}}</div>
-    <a [routerLink]="'/dashboard/orders'" class="font-semibold" mat-flat-button color="warn">Xem tất cả</a>
+    <!-- <a [routerLink]="'/dashboard/orders'" class="font-semibold" mat-flat-button color="warn">Xem tất cả</a> -->
   </div>
   <div class="col-span-6 md:col-span-3 border rounded px-4 lg:px-8 py-8 lg:py-16">
     <span class="text-accent mb-5">
@@ -27,9 +27,9 @@
 				<path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
 			</svg>
 		</span>
-    <h6>Offline</h6>
+    <h6>Chưa thanh toán</h6>
     <div class="count mb-3 mt-5">{{offline || 0}}</div>
-    <a [routerLink]="'/dashboard/orders'" class="font-semibold" mat-flat-button color="warn">Xem tất cả</a>
+    <!-- <a [routerLink]="'/dashboard/orders'" class="font-semibold" mat-flat-button color="warn">Xem tất cả</a> -->
   </div>
 	<div class="col-span-6 md:col-span-3 border rounded px-4 lg:px-8 py-8 lg:py-16">
     <span class="text-accent mb-5">
@@ -40,11 +40,11 @@
 		</span>
     <h6>Tổng tiền</h6>
     <div class="count mb-3 mt-5">{{allMoney | currency:'VND':'symbol':'1.0-0'}}</div>
-    <a [routerLink]="'/dashboard/orders'" class="font-semibold" mat-flat-button color="warn">Xem tất cả</a>
+    <!-- <a [routerLink]="'/dashboard/orders'" class="font-semibold" mat-flat-button color="warn">Xem tất cả</a> -->
   </div>
 </div>
 <div>
-	<h5 class="mb-3 font-medium">Thông tin người dùng:</h5>
+	<h5 class="mb-3 font-medium">Thông tin đơn hàng:</h5>
 	<div class="table-inside">
 		<table class="order-table table-auto ltMd:responsive">
 			<thead>
@@ -53,16 +53,19 @@
 						<span class="text-gray-800">STT</span>
 					</th>
 					<th>
-						<span class="text-gray-800">ID</span>
+						<span class="text-gray-800">Mã đơn hàng</span>
 					</th>
 					<th>
+						<span class="text-gray-800">Sản phẩm</span>
+					</th>
+					<!-- <th>
 						<span class="text-gray-800">Họ tên</span>
+					</th> -->
+					<th>
+						<span class="text-gray-800">Tổng tiền</span>
 					</th>
 					<th>
-						<span class="text-gray-800">Số tiền thanh toán</span>
-					</th>
-					<th>
-						<span class="text-gray-800">Lần mua cuối</span>
+						<span class="text-gray-800">Thời gian</span>
 					</th>
 	
 					<th>
@@ -79,8 +82,11 @@
 					<td>
 						<a class="text-primary" href="/">{{order?.id}}</a>
 					</td>
-					<td>
+					<!-- <td>
 						{{order?.orderBy | titlecase }}
+					</td> -->
+					<td>
+						
 					</td>
 					<td>
 						<span>{{order?.price | currency:'VND':'symbol':'1.0-0' }}</span>
@@ -91,15 +97,15 @@
 					<td>
 						<div [ngClass]="{
 
-							'bg-yellow-500 text-yellow-500': order?.status === '1',
+							'bg-red-500 text-red-500': order?.status === '1',
 							'bg-primary text-primary': order?.status === '0'
 							}" 
 							class="text-[12px] bg-opacity-20 rounded-full px-3 inline-block font-bold py-[3px]"
 						>
 							<!-- {{ order?.status | titlecase }}
 							 -->
-							<span *ngIf="order?.status === '0'">Online</span>
-							<span *ngIf="order?.status === '1'">Offline</span>
+							<span *ngIf="order?.status === '0'">Đã thanh toán</span>
+							<span *ngIf="order?.status === '1'">Chưa thanh toán</span>
 						</div>
 					</td>
 					<td class="text-right">
@@ -130,3 +136,4 @@
 <div class="align-item-center text-center mt-4">
 	<pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
 </div>
+

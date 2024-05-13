@@ -51,6 +51,16 @@ dateStartWork
     this.major = adminList[0]['major']
   }
 
+  showModal = false;
+  showModalChangePasword = false;
+
+  toggleModal(){
+    this.showModal = !this.showModal;
+  }
+
+  openModalChangePassword(){
+    this.showModalChangePasword = !this.showModalChangePasword;
+  }
 
 
 }
